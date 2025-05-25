@@ -140,6 +140,57 @@
             width: 16px;
             height: 16px;
         }
+        
+    .diagram {
+      position: relative;
+      width: 400px;
+      height: 200px;
+    }
+    
+    .info-box {
+    position: relative;
+    width: 320px;
+    height: 80px;
+    background: #005baa;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 10px 10px 80px; /* espacio para la imagen */
+    box-sizing: border-box;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+  }
+
+  .info-box img {
+    position: absolute;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    border-radius: 6px;
+  }
+
+  .info-box a {
+    margin-left: auto;
+    background: white;
+    color: #005baa;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .info-box a:hover {
+    background: #003f7f;
+    color: white;
+  }
+</style>
     </style>
 </head>
 
@@ -299,12 +350,9 @@
             <strong>5. Auditoría y Trazabilidad</strong>
             <div class="subtemas">
                 <div class="subtema" style="display: flex; align-items: center; gap: 6px;">
-                    <img src="https://img.icons8.com/ios-filled/50/activity-history.png" alt="Historial de actividad"
-                        width="20" />
                     Registra actividad de usuarios
                 </div>
                 <div class="subtema" style="display: flex; align-items: center; gap: 6px;">
-                    <img src="https://img.icons8.com/ios-filled/50/error.png" alt="Errores" width="20" />
                     Errores y cambios sensibles
                 </div>
                 <div class="subtema">
@@ -313,11 +361,14 @@
             </div>
         </div>
     </div>
-
+    <div class="info-box">
+        <img src="DIAGRAMA.gif" alt="GIF ilustrativo" />
+        <div>
+            Ej: MySQL Enterprise Audit Plugin
+        </div>
+        <a href="diagrama.html">Ver diagrama</a></div>
     <!-- Fila 4 -->
-    <div class="fila medio" style="justify-content: center; gap: 60px; margin-top: 100px;">
-    
-        <div class="nodo" style="width: 140px; display: flex; flex-direction: column; align-items: center;">
+    <div class="nodo" style="width: 140px; display: flex; flex-direction: column; align-items: center; margin-left: 1090px;transform: translateY(-100px);">
             <strong>6. Trazabilidad con MySQL</strong>
             <div class="subtemas" style="margin-top: 10px;">
                 <div class="subtema">Consulta ejemplo:</div>
@@ -328,9 +379,27 @@
             <img src="https://img.icons8.com/ios-filled/50/mysql-logo.png" alt="MySQL" width="40"
                 style="margin-top: 15px;" />
         </div>
-    
-        <div class="nodo" style="width: 140px; display: flex; flex-direction: column; align-items: center;">
-            <strong>7. Percona Toolkit</strong>
+    <!-- NUEVO CUADRO  ENTRE EL 6 Y 7 -->
+    <div class="fila medio" style="justify-content: space-between; margin-top: 40px;">
+        <div class="nodo"
+            style="margin: 10px 20px 0 300px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-color:#00ffff; transform: translateY(60px);">
+            <strong>7. Herramientas y funciones</strong>
+            <div class="subtemas">
+                <div class="subtema">MySQL Enterprise Audit Plugin (de pago, pero hay alternativas).</div>
+                <div class="subtema">Percona Server for MySQL + audit_log plugin (gratuito).</div>
+                <div class="subtema">Uso de general_log y slow_query_log para monitoreo básico.</div>
+            </div>
+        </div>
+    </div>
+    <div class="info-box">
+        <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+        <div>
+            Ej: MySQL Enterprise Audit Plugin
+        </div>
+        <a href="diagrama_2.html">Ver diagrama</a>
+    </div>
+        <div class="nodo" style="width: 140px; display: flex; flex-direction: column; align-items: center;margin-left: 1100px; transform: translateY(-180px);">
+            <strong>8. Percona Toolkit</strong>
             <div class="subtemas" style="margin-top: 10px;">
                 <div class="subtema">pt-query-digest (auditoría)</div>
                 <div class="subtema">pt-table-checksum (comparación)</div>
@@ -341,7 +410,7 @@
         </div>
     
         <div class="nodo" style="width: 140px; display: flex; flex-direction: column; align-items: center;">
-            <strong>8. Resumen Final</strong>
+            <strong>9. Resumen Final</strong>
             <div class="subtemas" style="margin-top: 10px;">
                 <div class="subtema">Usar sistemas sólidos y WAF</div>
                 <div class="subtema">Monitoreo con auditoría</div>
@@ -478,6 +547,13 @@
             }, 600);
 
         }
+         // Animar la aparición de los cuadros uno a uno
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach((box, i) => {
+                setTimeout(() => {
+                    box.classList.add('visible');
+                }, 500 * (i + 1));
+            });
     </script>
 
 </body>
