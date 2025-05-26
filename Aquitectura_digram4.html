@@ -3,233 +3,685 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Arquitectura Web con Líneas Animadas y Flechas SVG + Imágenes Animadas</title>
+    <title>Seguridad Práctica en Bases de Datos</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f8fb;
+            background-color: #000;
+            color: #00ffff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
             text-align: center;
-            padding: 30px;
-            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
         }
 
         h2 {
+            text-align: center;
+            font-size: 18px;
             margin-bottom: 40px;
+            color: #00aaaa;
         }
 
-        .arquitectura {
+        .fila {
             display: flex;
             justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .fila.medio {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .nodo {
+            background-color: #111;
+            border: 2px solid #00ffff;
+            border-radius: 12px;
+            width: 130px;
+            padding: 10px;
+            font-size: 11px;
+            text-align: center;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .subtemas {
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .subtema {
+            background-color: #222;
+            border-left: 3px solid #00ffff;
+            padding: 4px 6px;
+            text-align: left;
+            font-size: 10px;
+        }
+
+        .espacio {
+            width: 130px;
+            height: 30px;
+        }
+
+        .imagenes-infra {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .imagenes-infra img {
+            width: 80px;
+            height: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .imagenes-infra img:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        .lineas-svg {
+            position: absolute;
+            top: -70px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .lineas-svg line {
+            stroke: #00ffff;
+            stroke-width: 2;
+            stroke-dasharray: 5, 5;
+        }
+
+        .nodo.animado {
+            width: 90px;
+            font-size: 12px;
+            padding: 6px;
+            border-color: #00aaaa;
+        }
+
+        /* SVG container inside fila for connection line */
+        #linea-conexion-svg {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .block img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .diagram {
+            position: relative;
+            width: 400px;
+            height: 200px;
+        }
+
+        .info-box {
+            position: relative;
+            width: 320px;
+            height: 80px;
+            background: #005baa;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 10px 10px 80px;
+            box-sizing: border-box;
+            font-weight: bold;
+            display: flex;
             align-items: center;
             gap: 10px;
-            flex-wrap: nowrap;
-            max-width: 1100px;
-            margin: auto;
+            font-family: Arial, sans-serif;
         }
 
-        .componente {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 110px;
-            text-decoration: none;
-            color: #2196f3;
-            border: 2px solid #2196f3;
-            padding: 10px;
-            border-radius: 12px;
-            background-color: #e3f2fd;
-            box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        /* Animación para las imágenes */
-        .componente img {
+        .info-box img {
+            position: absolute;
+            left: 10px;
             width: 60px;
             height: 60px;
-            margin-bottom: 10px;
-            animation: pulseFloat 4s ease-in-out infinite;
-            transform-origin: center center;
-        }
-
-        .componente span {
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .componente:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(33, 150, 243, 0.6);
-        }
-
-        .conexion {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            width: 50px;
-        }
-
-        .linea-container {
-            position: relative;
-            width: 100%;
-            height: 24px;
-            overflow: hidden;
-        }
-
-        .linea {
-            font-weight: bold;
-            letter-spacing: 6px;
-            color: #2196f3;
-            white-space: nowrap;
-            position: absolute;
+            object-fit: contain;
             top: 50%;
-            left: 0;
             transform: translateY(-50%);
-            animation: moveLine 2s linear infinite;
-            user-select: none;
+            pointer-events: none;
+            border-radius: 6px;
         }
 
-        .linea span {
-            padding-right: 10px;
+        .info-box a {
+            margin-left: auto;
+            background: white;
+            color: #005baa;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .flecha {
-            width: 24px;
-            height: 24px;
-            fill: #2196f3;
-            user-select: none;
-            margin-top: 4px;
-            animation: pulse 2s infinite;
+        .info-box a:hover {
+            background: #003f7f;
+            color: white;
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.6;
-                transform: scale(1.2);
-            }
+        /* SVG para la línea animada principal */
+        #svg-linea-principal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        @keyframes moveLine {
-            0% {
-                left: 0;
-            }
-
-            100% {
-                left: -100px;
-            }
+        .linea-animada {
+            stroke: #00ff00;
+            stroke-width: 3;
+            stroke-dasharray: 8, 4;
+            stroke-linecap: round;
+            fill: none;
         }
 
-        /* Nueva animación: pulso + flotación suave */
-        @keyframes pulseFloat {
+        /* Punto animado que se mueve por la línea */
+        .punto-animado {
+            fill: #00ff00;
+            filter: drop-shadow(0 0 5px #00ff00);
+        }
 
-            0%,
-            100% {
-                transform: scale(1) translateY(0);
-            }
+        /* Contenedor para cuadro 5 y ejemplo */
+        .contenedor-auditoria {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 30px 100px;
+            position: relative;
+            min-height: 150px;
+        }
 
-            50% {
-                transform: scale(1.1) translateY(-8px);
-            }
+        /* Contenedor para cuadro 7 y ejemplo */
+        .contenedor-herramientas {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 30px 100px;
+            position: relative;
+            min-height: 150px;
+        }
+
+        /* Contenedor para cuadro 8 y ejemplo */
+        .contenedor-percona {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 30px 100px;
+            position: relative;
+            min-height: 150px;
+        }
+
+        /* Contenedor para cuadro 9 y ejemplo */
+        .contenedor-resumen {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 30px 100px;
+            position: relative;
+            min-height: 150px;
+        }
+
+        /* SVG para las flechas curvas entre cuadros y ejemplos */
+        .svg-flecha-curva {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .flecha-curva {
+            stroke: #00ffff;
+            stroke-width: 3;
+            stroke-dasharray: 8, 4;
+            fill: none;
+            marker-end: url(#flecha);
+            opacity: 0.9;
+        }
+
+        .punto-flecha {
+            fill: #00ffff;
+            filter: drop-shadow(0 0 3px #00ffff);
         }
     </style>
 </head>
 
 <body>
-    <h2>Arquitectura Web Segura</h2>
-    <div class="arquitectura">
-        <a href="#" class="componente" id="usuario" title="Usuario">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Usuario" />
-            <span>Usuario</span>
-        </a>
 
-        <div class="conexion">
-            <div class="linea-container" aria-hidden="true">
-                <div class="linea">
-                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
+    <!-- SVG principal para la línea animada -->
+    <svg id="svg-linea-principal" width="100%" height="100%">
+        <defs>
+            <marker id="flecha-animada" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L10,3 z" fill="#00ff00" />
+            </marker>
+        </defs>
+        <!-- La línea se creará dinámicamente con JavaScript -->
+    </svg>
+
+    <!-- Definición global del marcador de flecha -->
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <marker id="flecha" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L10,3 z" fill="#00ffff" />
+            </marker>
+        </defs>
+    </svg>
+
+    <h1>Seguridad Práctica en Bases de Datos</h1>
+
+    <!-- Contenedor para Infraestructura (cuadro 1) y su ejemplo -->
+    <div class="contenedor-auditoria">
+        <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+            <div class="nodo nodo-infra" id="nodo-infraestructura">
+                <strong>1. Infraestructura Segura</strong>
+                <div class="subtemas">
+                    <div class="subtema">Ubuntu Server / CentOS</div>
+                    <div class="subtema">Estabilidad y seguridad</div>
+                    <div class="subtema">UFW, iptables, SELinux</div>
                 </div>
             </div>
-            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-            </svg>
-        </div>
 
-        <a href="#" class="componente" id="pagina-web" title="Página Web">
-            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Página Web" />
-            <span>Página Web</span>
-        </a>
-
-        <div class="conexion">
-            <div class="linea-container" aria-hidden="true">
-                <div class="linea">
-                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
-                </div>
+            <div class="imagenes-infra">
+                <svg class="lineas-svg">
+                    <line id="linea1" x1="70" y1="0" x2="10" y2="80" />
+                    <line id="linea2" x1="70" y1="0" x2="130" y2="80" />
+                </svg>
+                <img src="ubuntu.png" alt="Ubuntu" class="imagen-logo ubuntu" />
+                <img src="centeos.png" alt="CentOS" class="imagen-logo centos" />
             </div>
-            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-            </svg>
         </div>
 
-        <a href="#" class="componente" id="waf" title="Web Application Firewall">
-            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="WAF" />
-            <span>Web App Firewall</span>
-        </a>
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-infraestructura">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
 
-        <div class="conexion">
-            <div class="linea-container" aria-hidden="true">
-                <div class="linea">
-                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
-                </div>
+        <div class="info-box" id="info-infraestructura">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: Infraestructura
             </div>
-            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-            </svg>
+            <a href="infraestructura.html">Ver diagrama</a>
         </div>
-
-        <a href="#" class="componente" id="servidor" title="Servidor">
-            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331940.png" alt="Servidor" />
-            <span>Servidor</span>
-        </a>
-
-        <div class="conexion">
-            <div class="linea-container" aria-hidden="true">
-                <div class="linea">
-                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
-                </div>
+    </div>
+    <!-- Contenedor para Arquitectura (cuadro 2) y su ejemplo -->
+    <div class="contenedor-auditoria">
+        <div class="nodo" id="nodo-arquitectura">
+            <strong>2. Arquitectura</strong>
+            <div class="subtemas">
+                <div class="subtema">Estructura general de seguridad</div>
             </div>
-            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-            </svg>
+        </div>
+    
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-arquitectura">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+    
+        <div class="info-box" id="info-arquitectura">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: arquitectura
+            </div>
+            <a href="Arquitectura_digram4.html">Ver diagrama</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para Componentes (cuadro 3) y su ejemplo -->
+    <div class="contenedor-auditoria">
+        <div class="nodo" id="nodo-componentes">
+            <strong>3. Componentes</strong>
+            <div class="subtemas">
+                <div class="subtema">Usuarios acceden vía app web</div>
+                <div class="subtema">WAF filtra tráfico malicioso</div>
+                <div class="subtema">Servidor aloja motor de BD</div>
+                <div class="subtema">BD devuelve resultados</div>
+            </div>
         </div>
 
-        <a href="#" class="componente" id="bd" title="Base de Datos">
-            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Base de Datos" />
-            <span>Base de Datos</span>
-        </a>
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-componentes">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+
+        <div class="info-box" id="info-componentes">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: Componentes
+            </div>
+            <a href="componentes.html">Ver diagrama</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para WAF (cuadro 4) y su ejemplo -->
+    <div class="contenedor-auditoria">
+        <div class="nodo" id="nodo-waf">
+            <strong>4. WAF y su Función</strong>
+            <div class="subtemas">
+                <div class="subtema">Bloquea SQLi, XSS, endpoints</div>
+                <div class="subtema">Protección indirecta de BD</div>
+                <div class="subtema">Ej: ModSecurity, Cloudflare</div>
+            </div>
+        </div>
+
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-waf">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+
+        <div class="info-box" id="info-waf">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: WAF
+            </div>
+            <a href="waf.html">Ver diagrama</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para Auditoría (cuadro 5) y su ejemplo -->
+    <div class="contenedor-auditoria">
+        <div class="nodo" id="nodo-auditoria">
+            <strong>5. Auditoría y Trazabilidad</strong>
+            <div class="subtemas">
+                <div class="subtema">Registra actividad de usuarios</div>
+                <div class="subtema">Errores y cambios sensibles</div>
+                <div class="subtema">Usa plugins o logs nativos</div>
+            </div>
+        </div>
+
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-auditoria">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+
+        <div class="info-box" id="info-auditoria">
+            <img src="DIAGRAMA.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: Auditoria
+            </div>
+            <a href="diagrama.html">Ver diagrama</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para Trazabilidad (cuadro 6) y su ejemplo -->
+    <div class="contenedor-auditoria">
+        <div class="nodo" id="nodo-trazabilidad">
+            <strong>6. Trazabilidad con MySQL</strong>
+            <div class="subtemas" style="margin-top: 10px;">
+                <div class="subtema">Consulta ejemplo:</div>
+                <div class="subtema">SELECT * FROM mysql.general_log</div>
+                <div class="subtema">WHERE user_host LIKE '%usuario%'</div>
+                <div class="subtema">AND argument LIKE '%DELETE%';</div>
+            </div>
+        </div>
+
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-trazabilidad">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+
+        <div class="info-box" id="info-trazabilidad">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: Trazabilidad
+            </div>
+            <a href="trazabilidad.html">Ver diagrama</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para Herramientas (cuadro 7) y su ejemplo -->
+    <div class="contenedor-herramientas">
+        <div class="nodo" id="nodo-herramientas">
+            <strong>7. Herramientas y funciones</strong>
+            <div class="subtemas">
+                <div class="subtema">MySQL Enterprise Audit Plugin (de pago, pero hay alternativas)</div>
+                <div class="subtema">Percona Server for MySQL + audit_log plugin (gratuito)</div>
+                <div class="subtema">Uso de general_log y slow_query_log para monitoreo básico</div>
+            </div>
+        </div>
+
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-herramientas">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+
+        <div class="info-box" id="info-herramientas">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: Herramientas
+            </div>
+            <a href="diagrama_2.html">Ver diagrama</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para Percona (cuadro 8) y su ejemplo -->
+    <div class="contenedor-percona">
+        <div class="nodo" id="nodo-percona" style="width: 140px;">
+            <strong>8. Percona Toolkit</strong>
+            <div class="subtemas" style="margin-top: 10px;">
+                <div class="subtema">pt-query-digest (auditoría)</div>
+                <div class="subtema">pt-table-checksum (comparación)</div>
+                <div class="subtema">Consulta lenta / replicación</div>
+            </div>
+        </div>
+
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-percona">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+
+        <div class="info-box" id="info-percona">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: PERCONA Toolkit
+            </div>
+            <a href="diagrama_3.html">Ver diagrama</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para Resumen Final (cuadro 9) y su ejemplo -->
+    <div class="contenedor-resumen">
+        <div class="nodo" id="nodo-resumen" style="width: 140px;">
+            <strong>9. Resumen Final</strong>
+            <div class="subtemas" style="margin-top: 10px;">
+                <div class="subtema">Usar sistemas sólidos y WAF</div>
+                <div class="subtema">Monitoreo con auditoría</div>
+                <div class="subtema">Respaldos frecuentes</div>
+            </div>
+        </div>
+
+        <!-- SVG para flecha curva -->
+        <svg class="svg-flecha-curva" id="svg-resumen">
+            <!-- La flecha se creará dinámicamente -->
+        </svg>
+
+        <div class="info-box" id="info-resumen">
+            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+            <div>
+                Ej: Resumen Final
+            </div>
+            <a href="resumen_final.html">Ver diagrama</a>
+        </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const componentes = document.querySelectorAll(".componente");
-            componentes.forEach((comp, index) => {
-                comp.style.opacity = 0;
-                comp.style.transform = "scale(0.8)";
-                comp.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        const ubuntu = document.querySelector(".ubuntu");
+        const centos = document.querySelector(".centos");
 
-                setTimeout(() => {
-                    comp.style.opacity = 1;
-                    comp.style.transform = "scale(1)";
-                }, 300 * index);
+        // Animación JS de las líneas punteadas en infraestructura
+        const lineasInfra = [document.getElementById("linea1"), document.getElementById("linea2")];
+        let offsetInfra = 0;
+
+        function animarLineasInfra() {
+            offsetInfra = (offsetInfra + 1) % 10;
+            lineasInfra.forEach(line => {
+                line.setAttribute("stroke-dashoffset", offsetInfra);
             });
+            requestAnimationFrame(animarLineasInfra);
+        }
+
+        animarLineasInfra();
+
+        // Función para crear flechas curvas entre nodos y ejemplos
+        function crearFlechasCurvas() {
+            // Configuración para cada par nodo-ejemplo
+            const conexiones = [
+                {
+                    nodoId: 'nodo-infraestructura',
+                    infoId: 'info-infraestructura',
+                    svgId: 'svg-infraestructura'
+                },
+                {
+                    nodoId: 'nodo-arquitectura',
+                    infoId: 'info-arquitectura',
+                    svgId: 'svg-arquitectura'
+                },
+                {
+                    nodoId: 'nodo-componentes',
+                    infoId: 'info-componentes',
+                    svgId: 'svg-componentes'
+                },
+                {
+                    nodoId: 'nodo-waf',
+                    infoId: 'info-waf',
+                    svgId: 'svg-waf'
+                },
+                {
+                    nodoId: 'nodo-auditoria',
+                    infoId: 'info-auditoria',
+                    svgId: 'svg-auditoria'
+                },
+                {
+                    nodoId: 'nodo-trazabilidad',
+                    infoId: 'info-trazabilidad',
+                    svgId: 'svg-trazabilidad'
+                },
+                {
+                    nodoId: 'nodo-herramientas',
+                    infoId: 'info-herramientas',
+                    svgId: 'svg-herramientas'
+                },
+                {
+                    nodoId: 'nodo-percona',
+                    infoId: 'info-percona',
+                    svgId: 'svg-percona'
+                },
+                {
+                    nodoId: 'nodo-resumen',
+                    infoId: 'info-resumen',
+                    svgId: 'svg-resumen'
+                }
+            ];
+
+            conexiones.forEach(conexion => {
+                const nodo = document.getElementById(conexion.nodoId);
+                const info = document.getElementById(conexion.infoId);
+                const svg = document.getElementById(conexion.svgId);
+
+                if (!nodo || !info || !svg) return;
+
+                // Obtener contenedor padre
+                const contenedor = svg.parentElement;
+                const rectContenedor = contenedor.getBoundingClientRect();
+
+                // Obtener posiciones relativas al contenedor
+                const rectNodo = nodo.getBoundingClientRect();
+                const rectInfo = info.getBoundingClientRect();
+
+                // Calcular posiciones relativas
+                const startX = rectNodo.left - rectContenedor.left + rectNodo.width;
+                const startY = rectNodo.top - rectContenedor.top + rectNodo.height / 2;
+                const endX = rectInfo.left - rectContenedor.left;
+                const endY = rectInfo.top - rectContenedor.top + rectInfo.height / 2;
+
+                // Limpiar SVG
+                svg.innerHTML = '';
+
+                // Crear curva suave
+                const midX = startX + (endX - startX) * 0.5;
+                const curveOffset = 30; // Curvatura hacia arriba
+                const midY = Math.min(startY, endY) - curveOffset;
+
+                const pathData = `M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`;
+
+                // Crear la línea curva
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', pathData);
+                path.setAttribute('class', 'flecha-curva');
+                svg.appendChild(path);
+
+                // Crear punto animado
+                const punto = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                punto.setAttribute('r', '3');
+                punto.setAttribute('class', 'punto-flecha');
+                svg.appendChild(punto);
+
+                // Animar el punto
+                let progress = 0;
+                function animarPuntoFlecha() {
+                    progress = (progress + 0.006) % 1;
+                    const totalLength = path.getTotalLength();
+                    const pointAtLength = path.getPointAtLength(progress * totalLength);
+                    punto.setAttribute('cx', pointAtLength.x);
+                    punto.setAttribute('cy', pointAtLength.y);
+                    requestAnimationFrame(animarPuntoFlecha);
+                }
+
+                // Animar la línea punteada
+                let dashOffset = 0;
+                function animarLineaFlecha() {
+                    dashOffset = (dashOffset - 0.6) % 12;
+                    path.setAttribute('stroke-dashoffset', dashOffset);
+                    requestAnimationFrame(animarLineaFlecha);
+                }
+
+                animarPuntoFlecha();
+                animarLineaFlecha();
+            });
+        }
+
+        // Función para crear la línea animada principal (ya no se necesita)
+        function crearLineaAnimadaPrincipal() {
+            // Esta función ya no es necesaria porque ahora arquitectura usa flecha curva como los demás
+        }
+
+        window.addEventListener('resize', () => {
+            setTimeout(() => {
+                crearFlechasCurvas();
+            }, 100);
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                crearFlechasCurvas();
+            }, 200);
         });
     </script>
+
 </body>
 
 </html>
