@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Arquitectura Web con Líneas Animadas y Flechas SVG + Imágenes Animadas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f8fb;
+            text-align: center;
+            padding: 30px;
+            color: #333;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+        }
+
+        .arquitectura {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .componente {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 110px;
+            text-decoration: none;
+            color: #2196f3;
+            border: 2px solid #2196f3;
+            padding: 10px;
+            border-radius: 12px;
+            background-color: #e3f2fd;
+            box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Animación para las imágenes */
+        .componente img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            animation: pulseFloat 4s ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        .componente span {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .componente:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(33, 150, 243, 0.6);
+        }
+
+        .conexion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            width: 50px;
+        }
+
+        .linea-container {
+            position: relative;
+            width: 100%;
+            height: 24px;
+            overflow: hidden;
+        }
+
+        .linea {
+            font-weight: bold;
+            letter-spacing: 6px;
+            color: #2196f3;
+            white-space: nowrap;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            animation: moveLine 2s linear infinite;
+            user-select: none;
+        }
+
+        .linea span {
+            padding-right: 10px;
+        }
+
+        .flecha {
+            width: 24px;
+            height: 24px;
+            fill: #2196f3;
+            user-select: none;
+            margin-top: 4px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes moveLine {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -100px;
+            }
+        }
+
+        /* Nueva animación: pulso + flotación suave */
+        @keyframes pulseFloat {
+
+            0%,
+            100% {
+                transform: scale(1) translateY(0);
+            }
+
+            50% {
+                transform: scale(1.1) translateY(-8px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Arquitectura Web Segura</h2>
+    <div class="arquitectura">
+        <a href="#" class="componente" id="usuario" title="Usuario">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Usuario" />
+            <span>Usuario</span>
+        </a>
+
+        <div class="conexion">
+            <div class="linea-container" aria-hidden="true">
+                <div class="linea">
+                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
+                </div>
+            </div>
+            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+        </div>
+
+        <a href="#" class="componente" id="pagina-web" title="Página Web">
+            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Página Web" />
+            <span>Página Web</span>
+        </a>
+
+        <div class="conexion">
+            <div class="linea-container" aria-hidden="true">
+                <div class="linea">
+                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
+                </div>
+            </div>
+            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+        </div>
+
+        <a href="#" class="componente" id="waf" title="Web Application Firewall">
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="WAF" />
+            <span>Web App Firewall</span>
+        </a>
+
+        <div class="conexion">
+            <div class="linea-container" aria-hidden="true">
+                <div class="linea">
+                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
+                </div>
+            </div>
+            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+        </div>
+
+        <a href="#" class="componente" id="servidor" title="Servidor">
+            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331940.png" alt="Servidor" />
+            <span>Servidor</span>
+        </a>
+
+        <div class="conexion">
+            <div class="linea-container" aria-hidden="true">
+                <div class="linea">
+                    <span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span><span>-----</span>
+                </div>
+            </div>
+            <svg class="flecha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+        </div>
+
+        <a href="#" class="componente" id="bd" title="Base de Datos">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Base de Datos" />
+            <span>Base de Datos</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const componentes = document.querySelectorAll(".componente");
+            componentes.forEach((comp, index) => {
+                comp.style.opacity = 0;
+                comp.style.transform = "scale(0.8)";
+                comp.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
+                setTimeout(() => {
+                    comp.style.opacity = 1;
+                    comp.style.transform = "scale(1)";
+                }, 300 * index);
+            });
+        });
+    </script>
+</body>
+
+</html>
