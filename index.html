@@ -305,383 +305,359 @@
                 </div>
             </div>
 
-            <div class="imagenes-infra">
-                <svg class="lineas-svg">
-                    <line id="linea1" x1="70" y1="0" x2="10" y2="80" />
-                    <line id="linea2" x1="70" y1="0" x2="130" y2="80" />
-                </svg>
-                <img src="ubuntu.png" alt="Ubuntu" class="imagen-logo ubuntu" />
-                <img src="centeos.png" alt="CentOS" class="imagen-logo centos" />
-            </div>
-        </div>
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-infraestructura">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-infraestructura">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
+            <div class="info-box" id="info-infraestructura">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: Infraestructura
+                </div>
+                <a href="diagrama_1Infrestrutura.html">Ver diagrama</a>
+            </div>
+        </div>
+        <!-- Contenedor para Arquitectura (cuadro 2) y su ejemplo -->
+        <!-- Contenedor para Arquitectura (cuadro 2) y su ejemplo -->
+        <div class="contenedor-auditoria">
+            <div class="nodo" id="nodo-arquitectura">
+                <strong>2. Arquitectura</strong>
+                <div class="subtemas">
+                    <div class="subtema">Estructura general de seguridad</div>
+                </div>
+            </div>
 
-        <div class="info-box" id="info-infraestructura">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: Infraestructura
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-arquitectura">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
+
+            <div class="info-box" id="info-arquitectura">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: Arquitectura
+                </div>
+                <a href="arquite.html">Ver diagrama</a>
             </div>
-            <a href="infraestructura.html">Ver diagrama</a>
-        </div>
-    </div>
-    <!-- Contenedor para Arquitectura (cuadro 2) y su ejemplo -->
-    <div class="contenedor-auditoria">
-        <div class="nodo" id="nodo-arquitectura">
-            <strong>2. Arquitectura</strong>
-            <div class="subtemas">
-                <div class="subtema">Estructura general de seguridad</div>
             </div>
-        </div>
     
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-arquitectura">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-    
-        <div class="info-box" id="info-arquitectura">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: arquitectura
+        <!-- Contenedor para Componentes (cuadro 3) y su ejemplo -->
+        <div class="contenedor-auditoria">
+            <div class="nodo" id="nodo-componentes">
+                <strong>3. Componentes</strong>
+                <div class="subtemas">
+                    <div class="subtema">Usuarios acceden vía app web</div>
+                    <div class="subtema">WAF filtra tráfico malicioso</div>
+                    <div class="subtema">Servidor aloja motor de BD</div>
+                    <div class="subtema">BD devuelve resultados</div>
+                </div>
             </div>
-            <a href="diagreama_4.html".html">Ver diagrama</a>
-        </div>
-    </div>
 
-    <!-- Contenedor para Componentes (cuadro 3) y su ejemplo -->
-    <div class="contenedor-auditoria">
-        <div class="nodo" id="nodo-componentes">
-            <strong>3. Componentes</strong>
-            <div class="subtemas">
-                <div class="subtema">Usuarios acceden vía app web</div>
-                <div class="subtema">WAF filtra tráfico malicioso</div>
-                <div class="subtema">Servidor aloja motor de BD</div>
-                <div class="subtema">BD devuelve resultados</div>
-            </div>
-        </div>
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-componentes">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-componentes">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-
-        <div class="info-box" id="info-componentes">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: Componentes
-            </div>
-            <a href="componentes.html">Ver diagrama</a>
-        </div>
-    </div>
-
-    <!-- Contenedor para WAF (cuadro 4) y su ejemplo -->
-    <div class="contenedor-auditoria">
-        <div class="nodo" id="nodo-waf">
-            <strong>4. WAF y su Función</strong>
-            <div class="subtemas">
-                <div class="subtema">Bloquea SQLi, XSS, endpoints</div>
-                <div class="subtema">Protección indirecta de BD</div>
-                <div class="subtema">Ej: ModSecurity, Cloudflare</div>
+            <div class="info-box" id="info-componentes">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: Componentes
+                </div>
+                <a href="componentes.html">Ver diagrama</a>
             </div>
         </div>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-waf">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-
-        <div class="info-box" id="info-waf">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: WAF
+        <!-- Contenedor para WAF (cuadro 4) y su ejemplo -->
+        <div class="contenedor-auditoria">
+            <div class="nodo" id="nodo-waf">
+                <strong>4. WAF y su Función</strong>
+                <div class="subtemas">
+                    <div class="subtema">Bloquea SQLi, XSS, endpoints</div>
+                    <div class="subtema">Protección indirecta de BD</div>
+                    <div class="subtema">Ej: ModSecurity, Cloudflare</div>
+                </div>
             </div>
-            <a href="waf.html">Ver diagrama</a>
-        </div>
-    </div>
 
-    <!-- Contenedor para Auditoría (cuadro 5) y su ejemplo -->
-    <div class="contenedor-auditoria">
-        <div class="nodo" id="nodo-auditoria">
-            <strong>5. Auditoría y Trazabilidad</strong>
-            <div class="subtemas">
-                <div class="subtema">Registra actividad de usuarios</div>
-                <div class="subtema">Errores y cambios sensibles</div>
-                <div class="subtema">Usa plugins o logs nativos</div>
-            </div>
-        </div>
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-waf">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-auditoria">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-
-        <div class="info-box" id="info-auditoria">
-            <img src="DIAGRAMA.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: Auditoria
-            </div>
-            <a href="diagrama.html">Ver diagrama</a>
-        </div>
-    </div>
-
-    <!-- Contenedor para Trazabilidad (cuadro 6) y su ejemplo -->
-    <div class="contenedor-auditoria">
-        <div class="nodo" id="nodo-trazabilidad">
-            <strong>6. Trazabilidad con MySQL</strong>
-            <div class="subtemas" style="margin-top: 10px;">
-                <div class="subtema">Consulta ejemplo:</div>
-                <div class="subtema">SELECT * FROM mysql.general_log</div>
-                <div class="subtema">WHERE user_host LIKE '%usuario%'</div>
-                <div class="subtema">AND argument LIKE '%DELETE%';</div>
+            <div class="info-box" id="info-waf">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: WAF
+                </div>
+                <a href="waf.html">Ver diagrama</a>
             </div>
         </div>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-trazabilidad">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-
-        <div class="info-box" id="info-trazabilidad">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: Trazabilidad
+        <!-- Contenedor para Auditoría (cuadro 5) y su ejemplo -->
+        <div class="contenedor-auditoria">
+            <div class="nodo" id="nodo-auditoria">
+                <strong>5. Auditoría y Trazabilidad</strong>
+                <div class="subtemas">
+                    <div class="subtema">Registra actividad de usuarios</div>
+                    <div class="subtema">Errores y cambios sensibles</div>
+                    <div class="subtema">Usa plugins o logs nativos</div>
+                </div>
             </div>
-            <a href="trazabilidad.html">Ver diagrama</a>
-        </div>
-    </div>
 
-    <!-- Contenedor para Herramientas (cuadro 7) y su ejemplo -->
-    <div class="contenedor-herramientas">
-        <div class="nodo" id="nodo-herramientas">
-            <strong>7. Herramientas y funciones</strong>
-            <div class="subtemas">
-                <div class="subtema">MySQL Enterprise Audit Plugin (de pago, pero hay alternativas)</div>
-                <div class="subtema">Percona Server for MySQL + audit_log plugin (gratuito)</div>
-                <div class="subtema">Uso de general_log y slow_query_log para monitoreo básico</div>
-            </div>
-        </div>
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-auditoria">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-herramientas">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-
-        <div class="info-box" id="info-herramientas">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: Herramientas
-            </div>
-            <a href="diagrama_2.html">Ver diagrama</a>
-        </div>
-    </div>
-
-    <!-- Contenedor para Percona (cuadro 8) y su ejemplo -->
-    <div class="contenedor-percona">
-        <div class="nodo" id="nodo-percona" style="width: 140px;">
-            <strong>8. Percona Toolkit</strong>
-            <div class="subtemas" style="margin-top: 10px;">
-                <div class="subtema">pt-query-digest (auditoría)</div>
-                <div class="subtema">pt-table-checksum (comparación)</div>
-                <div class="subtema">Consulta lenta / replicación</div>
+            <div class="info-box" id="info-auditoria">
+                <img src="DIAGRAMA.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: Auditoria
+                </div>
+                <a href="diagrama.html">Ver diagrama</a>
             </div>
         </div>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-percona">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-
-        <div class="info-box" id="info-percona">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: PERCONA Toolkit
+        <!-- Contenedor para Trazabilidad (cuadro 6) y su ejemplo -->
+        <div class="contenedor-auditoria">
+            <div class="nodo" id="nodo-trazabilidad">
+                <strong>6. Trazabilidad con MySQL</strong>
+                <div class="subtemas" style="margin-top: 10px;">
+                    <div class="subtema">Consulta ejemplo:</div>
+                    <div class="subtema">SELECT * FROM mysql.general_log</div>
+                    <div class="subtema">WHERE user_host LIKE '%usuario%'</div>
+                    <div class="subtema">AND argument LIKE '%DELETE%';</div>
+                </div>
             </div>
-            <a href="diagrama_3.html">Ver diagrama</a>
-        </div>
-    </div>
 
-    <!-- Contenedor para Resumen Final (cuadro 9) y su ejemplo -->
-    <div class="contenedor-resumen">
-        <div class="nodo" id="nodo-resumen" style="width: 140px;">
-            <strong>9. Resumen Final</strong>
-            <div class="subtemas" style="margin-top: 10px;">
-                <div class="subtema">Usar sistemas sólidos y WAF</div>
-                <div class="subtema">Monitoreo con auditoría</div>
-                <div class="subtema">Respaldos frecuentes</div>
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-trazabilidad">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
+
+            <div class="info-box" id="info-trazabilidad">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: Trazabilidad
+                </div>
+                <a href="trazabilidad.html">Ver diagrama</a>
             </div>
         </div>
 
-        <!-- SVG para flecha curva -->
-        <svg class="svg-flecha-curva" id="svg-resumen">
-            <!-- La flecha se creará dinámicamente -->
-        </svg>
-
-        <div class="info-box" id="info-resumen">
-            <img src="diagrama_2.gif" alt="GIF ilustrativo" />
-            <div>
-                Ej: Resumen Final
+        <!-- Contenedor para Herramientas (cuadro 7) y su ejemplo -->
+        <div class="contenedor-herramientas">
+            <div class="nodo" id="nodo-herramientas">
+                <strong>7. Herramientas y funciones</strong>
+                <div class="subtemas">
+                    <div class="subtema">MySQL Enterprise Audit Plugin (de pago, pero hay alternativas)</div>
+                    <div class="subtema">Percona Server for MySQL + audit_log plugin (gratuito)</div>
+                    <div class="subtema">Uso de general_log y slow_query_log para monitoreo básico</div>
+                </div>
             </div>
-            <a href="resumen_final.html">Ver diagrama</a>
+
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-herramientas">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
+
+            <div class="info-box" id="info-herramientas">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: Herramientas
+                </div>
+                <a href="diagrama_2.html">Ver diagrama</a>
+            </div>
         </div>
-    </div>
 
-    <script>
-        const ubuntu = document.querySelector(".ubuntu");
-        const centos = document.querySelector(".centos");
+        <!-- Contenedor para Percona (cuadro 8) y su ejemplo -->
+        <div class="contenedor-percona">
+            <div class="nodo" id="nodo-percona" style="width: 140px;">
+                <strong>8. Percona Toolkit</strong>
+                <div class="subtemas" style="margin-top: 10px;">
+                    <div class="subtema">pt-query-digest (auditoría)</div>
+                    <div class="subtema">pt-table-checksum (comparación)</div>
+                    <div class="subtema">Consulta lenta / replicación</div>
+                </div>
+            </div>
 
-        // Animación JS de las líneas punteadas en infraestructura
-        const lineasInfra = [document.getElementById("linea1"), document.getElementById("linea2")];
-        let offsetInfra = 0;
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-percona">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
 
-        function animarLineasInfra() {
-            offsetInfra = (offsetInfra + 1) % 10;
-            lineasInfra.forEach(line => {
-                line.setAttribute("stroke-dashoffset", offsetInfra);
+            <div class="info-box" id="info-percona">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: PERCONA Toolkit
+                </div>
+                <a href="diagrama_3.html">Ver diagrama</a>
+            </div>
+        </div>
+
+        <!-- Contenedor para Resumen Final (cuadro 9) y su ejemplo -->
+        <div class="contenedor-resumen">
+            <div class="nodo" id="nodo-resumen" style="width: 140px;">
+                <strong>9. Resumen Final</strong>
+                <div class="subtemas" style="margin-top: 10px;">
+                    <div class="subtema">Usar sistemas sólidos y WAF</div>
+                    <div class="subtema">Monitoreo con auditoría</div>
+                    <div class="subtema">Respaldos frecuentes</div>
+                </div>
+            </div>
+
+            <!-- SVG para flecha curva -->
+            <svg class="svg-flecha-curva" id="svg-resumen">
+                <!-- La flecha se creará dinámicamente -->
+            </svg>
+
+            <div class="info-box" id="info-resumen">
+                <img src="diagrama_2.gif" alt="GIF ilustrativo" />
+                <div>
+                    Ej: Resumen Final
+                </div>
+                <a href="resumen_final.html">Ver diagrama</a>
+            </div>
+        </div>
+
+        <script>
+
+
+            // Función para crear flechas curvas entre nodos y ejemplos
+            function crearFlechasCurvas() {
+                // Configuración para cada par nodo-ejemplo
+                const conexiones = [
+                    {
+                        nodoId: 'nodo-infraestructura',
+                        infoId: 'info-infraestructura',
+                        svgId: 'svg-infraestructura'
+                    },
+                    {
+                        nodoId: 'nodo-arquitectura',
+                        infoId: 'info-arquitectura',
+                        svgId: 'svg-arquitectura'
+                    },
+                    {
+                        nodoId: 'nodo-componentes',
+                        infoId: 'info-componentes',
+                        svgId: 'svg-componentes'
+                    },
+                    {
+                        nodoId: 'nodo-waf',
+                        infoId: 'info-waf',
+                        svgId: 'svg-waf'
+                    },
+                    {
+                        nodoId: 'nodo-auditoria',
+                        infoId: 'info-auditoria',
+                        svgId: 'svg-auditoria'
+                    },
+                    {
+                        nodoId: 'nodo-trazabilidad',
+                        infoId: 'info-trazabilidad',
+                        svgId: 'svg-trazabilidad'
+                    },
+                    {
+                        nodoId: 'nodo-herramientas',
+                        infoId: 'info-herramientas',
+                        svgId: 'svg-herramientas'
+                    },
+                    {
+                        nodoId: 'nodo-percona',
+                        infoId: 'info-percona',
+                        svgId: 'svg-percona'
+                    },
+                    {
+                        nodoId: 'nodo-resumen',
+                        infoId: 'info-resumen',
+                        svgId: 'svg-resumen'
+                    }
+                ];
+
+                conexiones.forEach(conexion => {
+                    const nodo = document.getElementById(conexion.nodoId);
+                    const info = document.getElementById(conexion.infoId);
+                    const svg = document.getElementById(conexion.svgId);
+
+                    if (!nodo || !info || !svg) return;
+
+                    // Obtener contenedor padre
+                    const contenedor = svg.parentElement;
+                    const rectContenedor = contenedor.getBoundingClientRect();
+
+                    // Obtener posiciones relativas al contenedor
+                    const rectNodo = nodo.getBoundingClientRect();
+                    const rectInfo = info.getBoundingClientRect();
+
+                    // Calcular posiciones relativas
+                    const startX = rectNodo.left - rectContenedor.left + rectNodo.width;
+                    const startY = rectNodo.top - rectContenedor.top + rectNodo.height / 2;
+                    const endX = rectInfo.left - rectContenedor.left;
+                    const endY = rectInfo.top - rectContenedor.top + rectInfo.height / 2;
+
+                    // Limpiar SVG
+                    svg.innerHTML = '';
+
+                    // Crear curva suave
+                    const midX = startX + (endX - startX) * 0.5;
+                    const curveOffset = 30; // Curvatura hacia arriba
+                    const midY = Math.min(startY, endY) - curveOffset;
+
+                    const pathData = `M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`;
+
+                    // Crear la línea curva
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', pathData);
+                    path.setAttribute('class', 'flecha-curva');
+                    svg.appendChild(path);
+
+                    // Crear punto animado
+                    const punto = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    punto.setAttribute('r', '3');
+                    punto.setAttribute('class', 'punto-flecha');
+                    svg.appendChild(punto);
+
+                    // Animar el punto
+                    let progress = 0;
+                    function animarPuntoFlecha() {
+                        progress = (progress + 0.006) % 1;
+                        const totalLength = path.getTotalLength();
+                        const pointAtLength = path.getPointAtLength(progress * totalLength);
+                        punto.setAttribute('cx', pointAtLength.x);
+                        punto.setAttribute('cy', pointAtLength.y);
+                        requestAnimationFrame(animarPuntoFlecha);
+                    }
+
+                    // Animar la línea punteada
+                    let dashOffset = 0;
+                    function animarLineaFlecha() {
+                        dashOffset = (dashOffset - 0.6) % 12;
+                        path.setAttribute('stroke-dashoffset', dashOffset);
+                        requestAnimationFrame(animarLineaFlecha);
+                    }
+
+                    animarPuntoFlecha();
+                    animarLineaFlecha();
+                });
+            }
+
+            // Función para crear la línea animada principal (ya no se necesita)
+            function crearLineaAnimadaPrincipal() {
+                // Esta función ya no es necesaria porque ahora arquitectura usa flecha curva como los demás
+            }
+
+            window.addEventListener('resize', () => {
+                setTimeout(() => {
+                    crearFlechasCurvas();
+                }, 100);
             });
-            requestAnimationFrame(animarLineasInfra);
-        }
 
-        animarLineasInfra();
-
-        // Función para crear flechas curvas entre nodos y ejemplos
-        function crearFlechasCurvas() {
-            // Configuración para cada par nodo-ejemplo
-            const conexiones = [
-                {
-                    nodoId: 'nodo-infraestructura',
-                    infoId: 'info-infraestructura',
-                    svgId: 'svg-infraestructura'
-                },
-                {
-                    nodoId: 'nodo-arquitectura',
-                    infoId: 'info-arquitectura',
-                    svgId: 'svg-arquitectura'
-                },
-                {
-                    nodoId: 'nodo-componentes',
-                    infoId: 'info-componentes',
-                    svgId: 'svg-componentes'
-                },
-                {
-                    nodoId: 'nodo-waf',
-                    infoId: 'info-waf',
-                    svgId: 'svg-waf'
-                },
-                {
-                    nodoId: 'nodo-auditoria',
-                    infoId: 'info-auditoria',
-                    svgId: 'svg-auditoria'
-                },
-                {
-                    nodoId: 'nodo-trazabilidad',
-                    infoId: 'info-trazabilidad',
-                    svgId: 'svg-trazabilidad'
-                },
-                {
-                    nodoId: 'nodo-herramientas',
-                    infoId: 'info-herramientas',
-                    svgId: 'svg-herramientas'
-                },
-                {
-                    nodoId: 'nodo-percona',
-                    infoId: 'info-percona',
-                    svgId: 'svg-percona'
-                },
-                {
-                    nodoId: 'nodo-resumen',
-                    infoId: 'info-resumen',
-                    svgId: 'svg-resumen'
-                }
-            ];
-
-            conexiones.forEach(conexion => {
-                const nodo = document.getElementById(conexion.nodoId);
-                const info = document.getElementById(conexion.infoId);
-                const svg = document.getElementById(conexion.svgId);
-
-                if (!nodo || !info || !svg) return;
-
-                // Obtener contenedor padre
-                const contenedor = svg.parentElement;
-                const rectContenedor = contenedor.getBoundingClientRect();
-
-                // Obtener posiciones relativas al contenedor
-                const rectNodo = nodo.getBoundingClientRect();
-                const rectInfo = info.getBoundingClientRect();
-
-                // Calcular posiciones relativas
-                const startX = rectNodo.left - rectContenedor.left + rectNodo.width;
-                const startY = rectNodo.top - rectContenedor.top + rectNodo.height / 2;
-                const endX = rectInfo.left - rectContenedor.left;
-                const endY = rectInfo.top - rectContenedor.top + rectInfo.height / 2;
-
-                // Limpiar SVG
-                svg.innerHTML = '';
-
-                // Crear curva suave
-                const midX = startX + (endX - startX) * 0.5;
-                const curveOffset = 30; // Curvatura hacia arriba
-                const midY = Math.min(startY, endY) - curveOffset;
-
-                const pathData = `M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`;
-
-                // Crear la línea curva
-                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                path.setAttribute('d', pathData);
-                path.setAttribute('class', 'flecha-curva');
-                svg.appendChild(path);
-
-                // Crear punto animado
-                const punto = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                punto.setAttribute('r', '3');
-                punto.setAttribute('class', 'punto-flecha');
-                svg.appendChild(punto);
-
-                // Animar el punto
-                let progress = 0;
-                function animarPuntoFlecha() {
-                    progress = (progress + 0.006) % 1;
-                    const totalLength = path.getTotalLength();
-                    const pointAtLength = path.getPointAtLength(progress * totalLength);
-                    punto.setAttribute('cx', pointAtLength.x);
-                    punto.setAttribute('cy', pointAtLength.y);
-                    requestAnimationFrame(animarPuntoFlecha);
-                }
-
-                // Animar la línea punteada
-                let dashOffset = 0;
-                function animarLineaFlecha() {
-                    dashOffset = (dashOffset - 0.6) % 12;
-                    path.setAttribute('stroke-dashoffset', dashOffset);
-                    requestAnimationFrame(animarLineaFlecha);
-                }
-
-                animarPuntoFlecha();
-                animarLineaFlecha();
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    crearFlechasCurvas();
+                }, 200);
             });
-        }
-
-        // Función para crear la línea animada principal (ya no se necesita)
-        function crearLineaAnimadaPrincipal() {
-            // Esta función ya no es necesaria porque ahora arquitectura usa flecha curva como los demás
-        }
-
-        window.addEventListener('resize', () => {
-            setTimeout(() => {
-                crearFlechasCurvas();
-            }, 100);
-        });
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                crearFlechasCurvas();
-            }, 200);
-        });
-    </script>
+        </script>
 
 </body>
 
-</html>
+</html>a
