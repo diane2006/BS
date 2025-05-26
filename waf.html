@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Diagrama Animado - WAF y su Función (JS Animado)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef4fb;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 450px;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            z-index: 0;
+        }
+
+        line {
+            stroke: #4a90e2;
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 150;
+            stroke-dashoffset: 150;
+        }
+
+        .waf-box {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(74, 144, 226, 0.4);
+            width: 220px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            cursor: default;
+            opacity: 0;
+            transform-origin: center center;
+            border: 3px solid #4a90e2;
+            z-index: 10;
+        }
+
+        .waf-box img {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .waf-box h2 {
+            margin: 0;
+            color: #2a4d9b;
+        }
+
+        .bubble {
+            position: absolute;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+            width: 180px;
+            padding: 15px 20px;
+            font-size: 15px;
+            color: #333;
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 5;
+        }
+
+        /* Posiciones iniciales de las burbujas */
+        .bubble1 {
+            top: 40px;
+            left: 90px;
+        }
+
+        .bubble2 {
+            top: 40px;
+            right: 90px;
+        }
+
+        .bubble3 {
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <svg>
+            <line id="line1" x1="450" y1="260" x2="270" y2="110" />
+            <line id="line2" x1="450" y1="260" x2="630" y2="110" />
+            <line id="line3" x1="450" y1="360" x2="450" y2="410" />
+        </svg>
+
+        <div id="wafBox" class="waf-box" title="Web Application Firewall">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="WAF Icon" />
+            <h2>WAF (Firewall Web)</h2>
+        </div>
+
+        <div id="bubble1" class="bubble bubble1">
+            <strong>Bloquea ataques:</strong>
+            <ul>
+                <li>SQLi</li>
+                <li>XSS</li>
+                <li>Endpoints maliciosos</li>
+            </ul>
+        </div>
+
+        <div id="bubble2" class="bubble bubble2">
+            <strong>Protección indirecta</strong><br />de la base de datos
+        </div>
+
+        <div id="bubble3" class="bubble bubble3">
+            <strong>Ejemplos:</strong><br />
+            ModSecurity, Cloudflare
+        </div>
+
+    </div>
+
+    <script>
+        // Función para animar el trazo de una línea SVG
+        function animateLine(line, duration = 1000) {
+            return new Promise((resolve) => {
+                const length = line.getTotalLength();
+                line.style.strokeDasharray = length;
+                line.style.strokeDashoffset = length;
+
+                let start = null;
+                function draw(timestamp) {
+                    if (!start) start = timestamp;
+                    let elapsed = timestamp - start;
+                    let progress = Math.min(elapsed / duration, 1);
+                    line.style.strokeDashoffset = length * (1 - progress);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(draw);
+                    } else {
+                        resolve();
+                    }
+                }
+                requestAnimationFrame(draw);
+            });
+        }
+
+        // Función para mostrar y animar cajas con fade y slide
+        function showBox(box, delay = 0) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    box.style.transition = 'opacity 600ms ease, transform 600ms ease';
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
+                    setTimeout(resolve, 600);
+                }, delay);
+            });
+        }
+
+        async function runAnimation() {
+            const line1 = document.getElementById('line1');
+            const line2 = document.getElementById('line2');
+            const line3 = document.getElementById('line3');
+
+            const wafBox = document.getElementById('wafBox');
+            const bubble1 = document.getElementById('bubble1');
+            const bubble2 = document.getElementById('bubble2');
+            const bubble3 = document.getElementById('bubble3');
+
+            // Animar líneas en secuencia
+            await animateLine(line1, 1000);
+            await animateLine(line2, 1000);
+            await animateLine(line3, 800);
+
+            // Mostrar cuadro central
+            await showBox(wafBox);
+
+            // Mostrar burbujas en secuencia
+            await showBox(bubble1, 200);
+            await showBox(bubble2, 400);
+            await showBox(bubble3, 600);
+        }
+
+        // Iniciar animación cuando el contenido está cargado
+        window.onload = runAnimation;
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa Mental - Componentes App Web</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .mapa-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+    .nodo {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .nodo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+    .nodo img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+    .nodo p {
+      margin: 0;
+      font-size: 14px;
+    }
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .linea {
+      stroke: #4a90e2;
+      stroke-width: 3;
+      fill: none;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: dibujar 2s forwards;
+    }
+    @keyframes dibujar {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mapa-container">
+    <svg>
+      <!-- Líneas animadas -->
+      <line class="linea" x1="120" y1="120" x2="380" y2="120" />
+      <line class="linea" x1="380" y1="120" x2="640" y2="120" />
+      <line class="linea" x1="640" y1="120" x2="900" y2="120" />
+    </svg>
+
+    <!-- Nodos -->
+    <div class="nodo" style="top: 50px; left: 50px;">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Usuario">
+        <p>Usuarios<br><small>Acceden vía web</small></p>
+      </div>
+    </div>
+
+    <div class="nodo" style="top: 50px; left: 310px;">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/3211/3211455.png" alt="WAF">
+        <p>WAF<br><small>Filtra tráfico malicioso</small></p>
+      </div>
+    </div>
+
+    <div class="nodo" style="top: 50px; left: 570px;">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="Servidor">
+        <p>Servidor<br><small>Aloja motor BD</small></p>
+      </div>
+    </div>
+
+    <div class="nodo" style="top: 50px; left: 830px;">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/4257/4257483.png" alt="BD">
+        <p>BD<br><small>Devuelve resultado</small></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
